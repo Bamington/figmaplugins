@@ -18,15 +18,20 @@ figma.ui.onmessage = msg => {
         if (!text) {
             console.log("Can't see a textbox anywhere");
             if (!textnode) {
+                console.log("TextNode is empty, too.");
                 const text = figma.createText();
+                text.resize(20, 20);
+                console.log("Text field created and sized.");
                 textnode = text.id;
-                text = figma.getNodeById;
-                console.log("Node ID is " + textnode);
+                text.characters = "Yay";
+                console.log("Added node ID (" + textnode + ") to textnode.");
+                //text.textAutoResize("height");
+                //console.log("Told the box to auto-resize.")
             }
         }
         var roll = Math.floor(Math.random() * 6 + 1);
         console.log("Rolled a " + roll);
-        figma.getNodeById(textnode);
+        text = figma.getNodeById(textnode);
         console.log("Get node has found " + textnode);
         text.characters = roll.toString();
         console.log("Wrote the roll into the text box, I hope");
